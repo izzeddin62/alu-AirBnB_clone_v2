@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """simple flask routes"""
-from flask import Flask, abort, render_template_string, render_template
+from flask import Flask, abort, render_template
 
 app = Flask(__name__)
 
