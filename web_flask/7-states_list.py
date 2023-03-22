@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """simple flask routes"""
 from flask import Flask, abort, render_template
 from models import storage
@@ -13,8 +14,6 @@ def number_odd_or_even():
     states_list = []
     for i in states.keys():
         states_list.append(states[i])
-    print(states_list, "+++++++++++++++")
-    print(states, '==========')
     return render_template('7-states_list.html',
                             states=states_list)
 
