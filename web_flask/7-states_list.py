@@ -2,7 +2,7 @@
 """simple flask routes"""
 from flask import Flask, abort, render_template
 from models import storage
-from models.state import State;
+from models.state import State
 
 app = Flask(__name__)
 
@@ -16,7 +16,8 @@ def number_odd_or_even():
         states_list.append(states[i])
     sorted_list = sorted(states_list, key=lambda x: x['name'])
     return render_template('7-states_list.html',
-                            states=sorted_list)
+                           states=sorted_list)
+
 
 @app.teardown_appcontext
 def teardown(self):
