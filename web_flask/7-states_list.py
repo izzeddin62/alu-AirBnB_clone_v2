@@ -7,7 +7,7 @@ from models.state import State;
 app = Flask(__name__)
 
 
-@app.route('/test', strict_slashes=False)
+@app.route('/states_list', strict_slashes=False)
 def number_odd_or_even():
     """return message with paramns"""
     states = storage.all(State)
