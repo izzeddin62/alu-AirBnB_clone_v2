@@ -23,12 +23,13 @@ def cities(state_id):
     cities = storage.all(City).values()
     sorted_list = sorted(cities, key=lambda x: x['name'])
     filtered_list = [d for d in sorted_list if d['state_id'] == state_id]
-    if len(filtered_list) > 0:
-        states = storage.all(State).values()
-        state = [d for d in states if d['id'] == state_id][0]
+    states = storage.all(State).values()
+    state = [d for d in states if d['id'] == state_id]
+    if len(filtered_list) > 0 or len(state) > 0:
+
 
         return render_template('9-cities.html',
-                               state=state, cities=filtered_list)
+                               state=state[0], cities=filtered_list)
     else:
         abort(404)
 
