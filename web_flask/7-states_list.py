@@ -11,9 +11,11 @@ app = Flask(__name__)
 def number_odd_or_even():
     """return message with paramns"""
     states = storage.all(State)
+    print(states, '======== dictionary =========')
     states_list = []
     for i in states.keys():
         states_list.append(states[i])
+    print(states_list, '+++++++++ list +++++++++++++')
     sorted_list = sorted(states_list, key=lambda x: x['name'])
     return render_template('7-states_list.html',
                            states=sorted_list)
