@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """simple flask routes"""
-from flask import Flask, abort, render_template
+from flask import Flask, abort, render_template, render_template_string
 from models import storage
 from models.state import State
 from models.city import City
@@ -27,11 +27,20 @@ def cities(state_id):
     state = [d for d in states if d['id'] == state_id]
     if len(filtered_list) > 0 or len(state) > 0:
 
-
         return render_template('9-cities.html',
                                state=state[0], cities=filtered_list)
     else:
-        abort(404)
+        return render_template_string("""<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+
+        <H1>Not found!</H1>
+
+    </BODY>
+</HTML>""")
 
 
 @app.teardown_appcontext
