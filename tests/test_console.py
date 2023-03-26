@@ -21,4 +21,3 @@ class ConsoleTestCase(unittest.TestCase):
             with patch('sys.stdout', stdout):
                 console.onecmd('create State name="California')
             self.assertEqual(len(stdout.getvalue()), 37)
-            
