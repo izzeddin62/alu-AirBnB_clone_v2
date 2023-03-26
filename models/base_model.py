@@ -51,7 +51,7 @@ class BaseModel:
 
     def to_dict(self):
         """Convert instance into dict format"""
-        
+
         dictionary = {}
         dictionary.update(self.__dict__)
         dictionary.update({'__class__':
@@ -61,7 +61,7 @@ class BaseModel:
         if "_sa_instance_state" in dictionary.keys():
             del dictionary["_sa_instance_state"]
         return dictionary
-    
+
     def delete(self):
         """delete instance"""
         from models import storage
