@@ -8,14 +8,15 @@ from io import StringIO
 from models import storage
 import os
 
-
-
 stdout = StringIO()
 console = HBNBCommand()
 
 
 class ConsoleTestCase(unittest.TestCase):
+    """console test case"""
+
     def test_create(self):
+        """test create"""
         if os.getenv("HBNB_TYPE_STORAGE") != "db":
             with patch('sys.stdout', stdout):
                 console.onecmd('create State name="California')
