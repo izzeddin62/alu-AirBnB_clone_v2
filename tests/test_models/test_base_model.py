@@ -47,9 +47,10 @@ class test_basemodel(unittest.TestCase):
         with self.assertRaises(TypeError):
             new = BaseModel(**copy)
 
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE"), 'db')
     def test_save(self):
         """ Testing save """
-        i = self.value()
+        i = self.value(name="laundry")
         i.save()
         key = self.name + "." + i.id
         with open('file.json', 'r') as f:
@@ -67,13 +68,15 @@ class test_basemodel(unittest.TestCase):
         i = self.value()
         n = i.to_dict()
         self.assertEqual(i.to_dict(), n)
-
+    
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE"), 'db')
     def test_kwargs_none(self):
         """ """
         n = {None: None}
         with self.assertRaises(TypeError):
             new = self.value(**n)
 
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE"), 'db')
     def test_kwargs_one(self):
         """ """
         n = {'Name': 'test'}
