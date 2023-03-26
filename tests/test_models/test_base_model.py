@@ -75,6 +75,7 @@ class test_basemodel(unittest.TestCase):
         with self.assertRaises(TypeError):
             new = self.value(**n)
 
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE"), 'db')
     def test_kwargs_one(self):
         """ """
         n = {'Name': 'test'}
