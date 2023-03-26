@@ -26,6 +26,8 @@ def is_number(s):
         pass
 
     return False
+
+
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
 
@@ -87,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
                 pline = pline[2].strip()  # pline is now str
                 if pline:
                     # check for *args or **kwargs
-                    if pline[0] == '{' and pline[-1]  == '}'\
+                    if pline[0] == '{' and pline[-1] == '}'\
                             and type(eval(pline)) is dict:
                         _args = pline
                     else:
@@ -139,24 +141,26 @@ class HBNBCommand(cmd.Cmd):
         params = args.split(" ")[1:]
         for i in params:
             dt = i.split("=")
-            if (len(dt) != 2):
+            if len(dt) != 2:
                 continue
-            if ((dt[1][0] != '"' or dt[1][-1] != '"') and not  is_number(dt[1].replace('"', ''))):
+            if ((dt[1][0] != '"' or dt[1][-1] != '"')
+                    and not is_number(dt[1].replace('"', ''))):
                 continue
-            if ((dt[1][0] == '"' or dt[1][-1] == '"') and is_number(dt[1].replace('"', ''))):
+            if ((dt[1][0] == '"' or dt[1][-1] == '"')
+                    and is_number(dt[1].replace('"', ''))):
                 continue
             else:
                 dt[1] = dt[1].replace('"', '')
                 dt[1] = dt[1].split("_")
-                if (isinstance(dt[1],list)):
-                   dt[1] = " ".join(dt[1])
+                if isinstance(dt[1], list):
+                    dt[1] = " ".join(dt[1])
                 if (is_number(dt[1])):
                     print(dt[1])
                     if '.' in dt[1]:
                         dt[1] = float(dt[1])
                     else:
                         dt[1] = int(dt[1])
-                
+
                 obj[dt[0]] = dt[1]
         new_instance = HBNBCommand.classes[args.split(" ")[0]]()
 
@@ -226,7 +230,7 @@ class HBNBCommand(cmd.Cmd):
         key = c_name + "." + c_id
 
         try:
-            del(storage.all()[key])
+            del storage.all()[key]
             storage.save()
         except KeyError:
             print("** no instance found **")
@@ -358,6 +362,7 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
