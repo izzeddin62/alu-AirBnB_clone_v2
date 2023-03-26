@@ -49,7 +49,7 @@ class test_basemodel(unittest.TestCase):
 
     def test_save(self):
         """ Testing save """
-        i = self.value()
+        i = self.value(name="laundry")
         i.save()
         key = self.name + "." + i.id
         with open('file.json', 'r') as f:
