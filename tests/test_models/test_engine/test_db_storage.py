@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import unittest
 from models.state import State
+from models import storage
 import os
 
 
@@ -12,5 +13,5 @@ class TestDBStorage(unittest.TestCase):
             """ test state table"""
             state = State(name="test")
             state.save()
-            self.assertTrue(state.id in self.storage.all())
+            self.assertTrue(state.id in storage.all())
             self.assertEqual(state.name, "test")
